@@ -5,13 +5,16 @@ def parse_input(file_path):
     with open(file_path, 'r') as fh:
         lines = [l for l in fh.readlines()]
         num_contributors, num_projects = lines[0].split()
+        num_contributors = int(num_contributors)
+        num_projects = int(num_projects)
         contributors = []
         projects = []
         parsed_contributors = 0
+        lines.pop(0)
         while lines:
             l = lines.pop(0)
             if parsed_contributors < num_contributors:
-                num_contributors += 1
+                parsed_contributors += 1
                 name, skills_num = l.split()
                 skills_num = int(skills_num)
                 skills = []
@@ -30,6 +33,7 @@ def parse_input(file_path):
                     skill = parse_skill(lines)
                     required_skills.append(skill)
                 projects.append(Project(project_name, duration, score, best_before, required_skills))
+    return projects, contributors
 
 
 def parse_skill(lines):
@@ -40,3 +44,9 @@ def parse_skill(lines):
     return skill
 
 
+projects, contributors = parse_input('input_data/a_an_example.in.txt')
+print('=====projects====')
+print(projects)
+
+print('=====contributors====')
+print(contributors)

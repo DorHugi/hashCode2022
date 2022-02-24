@@ -6,6 +6,8 @@ class Skill:
     def __str__(self):
         return f'Skill: {self.type} {self.level}'
 
+    def __repr__(self):
+        return f'Skill: {self.type} {self.level}'
 
 class Project:
     #  Roles is an array of skills
@@ -19,6 +21,9 @@ class Project:
     def __str__(self):
         return f'Project: {self.name} {self.duration} {self.score} {self.best_before} {self.required_skills}'
 
+    def __repr__(self):
+        return f'Project: {self.name} {self.duration} {self.score} {self.best_before} {self.required_skills}'
+
 
 class Contributor:
     def __init__(self, name, skills):
@@ -26,4 +31,7 @@ class Contributor:
         self.name = name
 
     def __str__(self):
+        return f'Contributor: {self.name} {self.skills}'
+
+    def __repr__(self):
         return f'Contributor: {self.name} {self.skills}'
