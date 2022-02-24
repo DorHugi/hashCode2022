@@ -44,9 +44,16 @@ def parse_skill(lines):
     return skill
 
 
-projects, contributors = parse_input('input_data/a_an_example.in.txt')
-print('=====projects====')
-print(projects)
+def create_output_file(output_file_path, selected_projects):
+    lines = []
+    projects_num = str(len(selected_projects))
+    lines.append(projects_num)
+    for k, v in selected_projects.items():
+        lines.append(k)
+        lines.append(' '.join(v))
+    lines = [x + '\n' for x in lines]
 
-print('=====contributors====')
-print(contributors)
+    with open(output_file_path, 'w') as fh:
+        fh.writelines(lines)
+
+

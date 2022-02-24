@@ -30,9 +30,27 @@ class Contributor:
     def __init__(self, name, skills):
         self.skills = skills
         self.name = name
+        self.busy_days = []
 
     def __str__(self):
         return f'Contributor: {self.name} {self.skills}'
 
     def __repr__(self):
         return f'Contributor: {self.name} {self.skills}'
+
+    def is_free(self, start_date, end_date):
+        for bd in self.busy_days:
+            if bd >= start_date or bd <= end_date:
+                return False
+        return True
+
+    def is_fit_for_job(self, required_skill):
+        for skill in self.skills:
+            if skill.type == required_skill.type:
+                if skill.level >= required_skill.level:
+                    return True
+        return False
+
+    def update_project_taken(self, project: Project, start_date):
+        for i in range(start_date, start_date + project.duration):
+            self.busy_days.append(i)
