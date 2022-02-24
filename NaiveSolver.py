@@ -1,4 +1,9 @@
-class NaiveSolver:
+from copy import deepcopy
+
+from AbstractSolver import Solver
+
+
+class NaiveSolver(Solver):
     def solve(self, contributors, projects):
-        # returns a list of projects and who fills their roles
-        pass
+        contributors, projects = map(deepcopy, [contributors, projects])
+

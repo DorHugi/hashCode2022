@@ -9,6 +9,7 @@ class Skill:
     def __repr__(self):
         return f'Skill: {self.type} {self.level}'
 
+
 class Project:
     #  Roles is an array of skills
     def __init__(self, name, duration, score, best_before, required_skills):
